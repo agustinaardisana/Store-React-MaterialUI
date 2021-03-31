@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  // Sacar esto de aca despues
+  padding: 50px 50px;
+}
+
+.products__section {
+  display: flex;
+  flex-wrap: wrap;
+}

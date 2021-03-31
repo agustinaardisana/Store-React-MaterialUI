@@ -1,0 +1,13 @@
+.product__card {
+  width: 300px;
+  height: 346px;
+  margin: 20px 42px;
+
+  .not-available {
+    opacity: 0.3;
+  }
+
+  .product__title--sale {
+    color: rgb(120, 19, 19);
+  }
+}
