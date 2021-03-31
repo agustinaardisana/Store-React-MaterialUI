@@ -8,14 +8,17 @@ const SearchBar = ({ filterCards }) => {
 
   const handleChange = (e) => {
     setSearchValue(e.target.value);
-    console.log(searchValue);
-    filterCards(searchValue);
+    filterCards(e);
   };
 
   return (
     <label>
       <FontAwesomeIcon icon={faSearch} />
-      <input value={searchValue} onChange={handleChange}></input>
+      <input
+        className="search_bar"
+        value={searchValue}
+        onChange={handleChange}
+      ></input>
     </label>
   );
 };

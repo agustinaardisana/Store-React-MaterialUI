@@ -80,17 +80,17 @@ const App = () => {
   const [filteredList, setFilteredList] = useState(products);
   const [clearFilter, setClearFilter] = useState("");
 
-  const filterCards = (searchValue) => {
-    !searchValue
-      ? setClearFilter(products)
+  const filterCards = (e) => {
+    setClearFilter(e.target.value);
+    !e.target.value
+      ? setFilteredList(products)
       : setFilteredList(
           [...products].filter(
             (product) =>
-              product.title.toLowerCase().includes(searchValue) ||
-              product.type.toLowerCase().includes(searchValue)
+              product.title.toLowerCase().includes(e.target.value) ||
+              product.type.toLowerCase().includes(e.target.value)
           )
         );
-    console.log(filteredList);
   };
 
   return (
