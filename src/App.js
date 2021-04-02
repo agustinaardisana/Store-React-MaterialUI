@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.scss";
 import Card from "./components/Card";
 import SearchBar from "./components/SearchBar";
+import Filters from "./components/Filters";
 
 const products = [
   {
@@ -93,12 +94,52 @@ const App = () => {
         );
   };
 
+  const filterCollection = (valueCollection) => {
+    setFilteredList(
+      [...products].filter((product) => product.collection === valueCollection)
+    );
+  };
+
+  const filterColor = (valueColor) => {
+    setFilteredList(
+      [...products].filter((product) => product.color === valueColor)
+    );
+  };
+
+  const filterCategory = (valueCategory) => {
+    setFilteredList(
+      [...products].filter((product) => product.category === valueCategory)
+    );
+  };
+
+  const filterPriceRange = (valuePriceRange) => {
+    setFilteredList(
+      [...products].filter(
+        (product) =>
+          product.price >= valuePriceRange[0] &&
+          product.price <= valuePriceRange[1]
+      )
+    );
+    console.log(valuePriceRange);
+  };
+
+  const resetFilters = () => setFilteredList(products);
+
   return (
     <main>
       <section className="search__section">
         <SearchBar filterCards={filterCards} />
       </section>
       <section className="products__section">
+        <aside>
+          <Filters
+            filterCollection={filterCollection}
+            filterColor={filterColor}
+            filterCategory={filterCategory}
+            filterPriceRange={filterPriceRange}
+            resetFilters={resetFilters}
+          />
+        </aside>
         {filteredList.map((product, i) => {
           return (
             <Card
