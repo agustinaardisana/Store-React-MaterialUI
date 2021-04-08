@@ -79,10 +79,10 @@ const products = [
 
 const App = () => {
   const [filteredList, setFilteredList] = useState(products);
-  const [clearFilter, setClearFilter] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
-  const filterCards = (e) => {
-    setClearFilter(e.target.value);
+  const handleChangeSearch = (e) => {
+    setSearchValue(e.target.value);
     !e.target.value
       ? setFilteredList(products)
       : setFilteredList(
@@ -123,12 +123,16 @@ const App = () => {
     console.log(valuePriceRange);
   };
 
-  const resetFilters = () => setFilteredList(products);
+  const resetFilters = () => {
+    setFilteredList(products);
+    setSearchValue("");
+    console.log(searchValue);
+  };
 
   return (
     <main>
       <section className="search__section">
-        <SearchBar filterCards={filterCards} />
+        <SearchBar value={searchValue} handleChange={handleChangeSearch} />
       </section>
       <section className="products__section">
         <aside>
@@ -138,6 +142,7 @@ const App = () => {
             filterCategory={filterCategory}
             filterPriceRange={filterPriceRange}
             resetFilters={resetFilters}
+            setSearchValue={setSearchValue}
           />
         </aside>
         {filteredList.map((product, i) => {

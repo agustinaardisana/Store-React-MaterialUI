@@ -3,14 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const SearchBar = ({ filterCards }) => {
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-    filterCards(e);
-  };
-
+const SearchBar = ({ searchValue, handleChange }) => {
   return (
     <label>
       <FontAwesomeIcon icon={faSearch} />

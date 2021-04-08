@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import FilterSlider from "./FilterSlider.js";
 
@@ -30,16 +30,22 @@ const Filters = ({
   filterCategory,
   resetFilters,
   filterPriceRange,
+  setSearchValue,
 }) => {
   const classes = useStyles();
 
-  const [valueOpenAccordion, setValueAccordion] = useState(true);
+  const [valueOpenAccordion, setValueAccordion] = useState(false);
   const [value, setValue] = useState("");
 
-  const handleChangeAccordion = (e) => {
+  const handleChangeAccordion = () => {
     setValueAccordion(!valueOpenAccordion);
-    !valueOpenAccordion && resetFilters();
+    resetFilters();
   };
+
+  useEffect(() => {
+    !valueOpenAccordion && resetFilters();
+    console.log(valueOpenAccordion);
+  }, [valueOpenAccordion]);
 
   const handleChangeCollection = (e) => {
     setValue(e.target.value);
