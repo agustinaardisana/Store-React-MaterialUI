@@ -126,13 +126,15 @@ const App = () => {
   const resetFilters = () => {
     setFilteredList(products);
     setSearchValue("");
-    console.log(searchValue);
   };
 
   return (
     <main>
       <section className="search__section">
-        <SearchBar value={searchValue} handleChange={handleChangeSearch} />
+        <SearchBar
+          searchValue={searchValue}
+          handleChange={handleChangeSearch}
+        />
       </section>
       <section className="products__section">
         <aside>

@@ -44,7 +44,6 @@ const Filters = ({
 
   useEffect(() => {
     !valueOpenAccordion && resetFilters();
-    console.log(valueOpenAccordion);
   }, [valueOpenAccordion]);
 
   const handleChangeCollection = (e) => {
